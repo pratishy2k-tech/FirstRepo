@@ -1,0 +1,24 @@
+Interrupt Controller APB — Signal Flow
+═══════════════════════════════════════════════════════════
+
+ IRQ[7:0] ──> [Edge/Level Detect]
+ SWIR      ──>       +          ──> [Mask IMR] ──> [IPR] ──> [Priority Enc]
+                                                               │
+                                                           [ISR Register] <── cpu_ack / W1C
+                                                               │
+                               MICR[0]=0 ────────────────────>│
+                               (Line Mode)                     ├──> INT pin (line mode)
+                                                               │
+                               MICR[0]=1 ────────────────────>│
+                               (Msg Mode)                      └──> APB Master FSM
+                                                                       │
+                                                               ┌───────┴────────┐
+                                                               │  IDLE          │
+                                                               │  SETUP         │
+                                                               │  ACCESS        │
+                                                               └───────┬────────┘
+                                                                       │
+                                                    PSEL, PENABLE, PWRITE=1
+                                                    PADDR = {MADDR_HI,MADDR_LO}
+                                                    PWDATA = ISR value
+                                                       (messaged interrupt payload)
