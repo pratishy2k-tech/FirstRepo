@@ -1,0 +1,7 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1781768651" />
+    <testcase name="my_first_test" classname="test_my_design" file="/Users/pratishbehera/git-pratice/coco_learn/trial/test_my_design.py" lineno="10" time="0.0003368854522705078" sim_time_ns="20.0" ratio_time="59367.3602264685" />
+    <testcase name="my_second_test" classname="test_my_design" file="/Users/pratishbehera/git-pratice/coco_learn/trial/test_my_design.py" lineno="40" time="0.00011801719665527344" sim_time_ns="6.0" ratio_time="50840.048484848485" />
+  </testsuite>
+</testsuites>
